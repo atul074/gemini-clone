@@ -7,7 +7,7 @@ const Sidebar = () => {
     
 
     return (
-        <div className={`flex flex-col justify-between bg-gray-100 p-6 h-screen transition-all ${extended ? 'w-64' : 'w-20'} duration-300`}>
+        <div className={`flex flex-col justify-between bg-gray-100 p-4 h-screen transition-all ${extended ? 'w-64' : 'w-20'} duration-300`}>
             <div>
                 {/* Menu Icon */}
                 <img
@@ -18,7 +18,7 @@ const Sidebar = () => {
                 />
 
                 {/* New Chat */}
-                <div
+                <div 
                     onClick
                     className="flex items-center gap-2 p-3 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300"
                 >
@@ -46,7 +46,7 @@ const Sidebar = () => {
 
             {/* Bottom Menu */}
             <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 p-3 rounded-full cursor-pointer hover:bg-gray-300">
+                <div className="flex items-cente gap-2 p-3 rounded-full cursor-pointer hover:bg-gray-300">
                     <img src={assets.question_icon} alt="Help Icon" className="w-5" />
                     {extended && <p className="text-sm">Help</p>}
                 </div>
