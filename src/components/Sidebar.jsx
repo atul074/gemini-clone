@@ -1,9 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
-
+import { Context } from '../config/Context';
 const Sidebar = () => {
     const [extended, setExtended] = useState(false);
+    const { onSent, prevPrompts, setRecentPrompt, newChat } = useContext(Context);
 
+    const loadPrompt = async (prompt) => {
+      setRecentPrompt(prompt);
+      await onSent(prompt);
+    };
     
 
     return (
@@ -19,7 +24,7 @@ const Sidebar = () => {
 
                 {/* New Chat */}
                 <div 
-                    onClick
+                    onClick={newChat}
                     className="flex items-center gap-2 p-3 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300"
                 >
                     <img src={assets.plus_icon} alt="New Chat" className="w-5" />
@@ -30,7 +35,7 @@ const Sidebar = () => {
                 {extended && (
                     <div className="mt-6">
                         <p className="mb-4 text-gray-500">Recent</p>
-                        {/* {prevPrompts.map((item, index) => (
+                        {prevPrompts.map((item, index) => (
                             <div
                                 key={index}
                                 onClick={() => loadPrompt(item)}
@@ -39,7 +44,7 @@ const Sidebar = () => {
                                 <img src={assets.message_icon} alt="Message Icon" className="w-5" />
                                 <p className="text-sm text-gray-800">{item.slice(0, 18)}...</p>
                             </div>
-                        ))} */}
+                        ))}
                     </div>
                 )}
             </div>
